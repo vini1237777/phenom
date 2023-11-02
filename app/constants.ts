@@ -261,7 +261,7 @@ export const recruitersInfo = {
       'Boost the productivity of your recruiting team — with AI and automation.',
     sectionText: [
       "Tedious sourcing, screening, and scheduling tasks limit your team's",
-      { highlight: 'ability to execute.' },
+      { highlight: ' ability to execute.' },
     ],
     featureText:
       'Bolster your talent pipeline with speed, efficiency, and intelligence.',
