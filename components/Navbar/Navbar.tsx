@@ -9,9 +9,10 @@ import CompanyContent from './NavItemDialogHoverContent/DialogContent/Company';
 import ResourcesContent from './NavItemDialogHoverContent/DialogContent/Resources';
 import { styled } from '@mui/system';
 import { rem } from '@/app/utils';
+import { HoveredItemType } from './NavItemDialogHoverContent/NavItemDialog';
 
 interface INavbarPorps {
-  setHoveredItem: ()=> void;
+  setHoveredItem: (value: HoveredItemType) => void;
 };
 
 export const ButtonsWrapper = styled('div')({

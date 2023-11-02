@@ -7,7 +7,7 @@ import PlatformContent from './DialogContent/Platform';
 import ResourcesContent from './DialogContent/Resources';
 import SolutionsContent from './DialogContent/Solutions';
 
-type HoveredItemType = 'solution' | 'platform' | 'resources' | 'company';
+export type HoveredItemType = 'solution' | 'platform' | 'resources' | 'company' | '';
 
 const styles = {
   wrapper: {
@@ -31,7 +31,7 @@ const NavItemDialog = ({
   setHoveredItem,
 }: {
   hoveredItem: HoveredItemType;
-  setHoveredItem:(item:string)=>void;
+  setHoveredItem: (item: HoveredItemType) => void;
 }) => {
   return (
     <Box
