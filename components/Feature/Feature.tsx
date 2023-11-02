@@ -32,7 +32,8 @@ const Feature = ({role}:IObject) => {
       <Typography
         sx={{ fontSize: rem(52), lineHeight: '100%', width: rem(1100) }}
       >
-        {role.featureText} // The feature text coming from role
+        {/* The feature text coming from role */}
+        {role.featureText}
       </Typography>
 
       <Box sx={{ marginTop: rem(100) }}>
