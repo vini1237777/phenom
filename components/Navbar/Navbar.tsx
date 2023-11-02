@@ -104,13 +104,13 @@ const Navbar: React.FC<INavbarPorps> = ({
         sx={{
           backgroundColor: 'white',
           color: 'black',
-          top: '52px',
+          top: rem(62),
           position: 'sticky',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           padding:rem(10),
-          zIndex: 100
+          zIndex: 10
         }}
       >
         <Link href="/" passHref>

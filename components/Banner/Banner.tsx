@@ -10,7 +10,7 @@ const styles = {
     position: 'fixed',
     top: '0',
     width: '100%',
-    zIndex: 9,
+    zIndex: 12,
     textAlign: 'center',
     padding: '0',
   },
@@ -22,7 +22,6 @@ const styles = {
     fontSize: '14px',
     lineHeight: '100%',
     fontWeight: 400,
-    fontStyle: 'normal',
     textTransform: 'lowercase',
     '& span': {
       marginLeft: '30px',
