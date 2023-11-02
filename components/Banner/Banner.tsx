@@ -43,7 +43,7 @@ const Banner: React.FC = () => {
     <Box sx={{ ...styles.banner }}>
       <Box>
         <Link
-          href="/resource/what-organizations-need-hire-retain-bersin-southwest"
+          href="https://www.phenom.com/resource/what-organizations-need-hire-retain-bersin-southwest"
           passHref
         >
           <Button
