@@ -10,9 +10,8 @@ import Feature from '@/components/Feature/Feature';
 
 function Home() {
   const [hoveredNavItem, setHoveredNavItem] = useState<HoveredItemType>('');
-  console.log(hoveredNavItem);
   return (
-    <Box style={{ position: 'relative', height: '500px', width: '100vw' }}>
+    <Box style={{ position: 'relative', height: '500px'}}>
       {hoveredNavItem && (
         <NavItemDialog
           setHoveredItem={setHoveredNavItem}
