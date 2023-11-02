@@ -52,7 +52,7 @@ const Banner: React.FC = () => {
           >
             <p>
               <Typography component={'span'}>
-                Bersin &amp; Southwest: The X Factor | Sign up now →
+                Bersin & Southwest: The X Factor | Sign up now →
               </Typography>
             </p>
           </Button>
