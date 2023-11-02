@@ -7,9 +7,8 @@ import React, { useState } from 'react'
 import { ButtonsWrapper, DemoButton } from '../Navbar/Navbar';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const Recruiter = () => {
-
-const [open, setOpen] = useState(false);
+const Recruiter: React.FC = () => {
+  const [open, setOpen] = useState(false);
 
   return (
     <Box
@@ -34,7 +33,7 @@ const [open, setOpen] = useState(false);
               'https://images.ctfassets.net/0d3i1kfsuaq3/2ov9QTRpuLSZ9XJg8M0MV5/06ebe6fc1e519593ee110ac896acbf2b/01-recruiters-frontal_1__1_.webp'
             }
             alt={'Recruiters'}
-            sx={{ color: 'white', backgroundColor: 'white' }}
+            sx={{ backgroundColor: 'white' }}
           />
           <Typography
             sx={{
@@ -123,6 +122,7 @@ const [open, setOpen] = useState(false);
             fontSize: rem(64),
           }}
           component={'span'}
+          
         >
           Recruiters
         </Typography>
@@ -197,6 +197,6 @@ const [open, setOpen] = useState(false);
       </Box>
     </Box>
   );
-}
+};
 
 export default Recruiter

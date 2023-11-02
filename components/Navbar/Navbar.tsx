@@ -111,7 +111,7 @@ const Navbar: React.FC<INavbarPorps> = ({
           alignItems: 'center',
           justifyContent: 'space-between',
           padding:rem(10),
-          zIndex: 10
+          zIndex: 100
         }}
       >
         <Link href="/" passHref>
@@ -138,14 +138,20 @@ const Navbar: React.FC<INavbarPorps> = ({
             ) : (
               <React.Fragment key={item.key}>
                 <Button
-                  onMouseEnter={() => setHoveredItem(item.key)}
-                  onMouseLeave={() => setHoveredItem('')}
+                  onMouseEnter={() => {
+                    setHoveredItem(item.key);
+                    document.body.style.overflow = 'hidden';
+                  }}
+                  onMouseLeave={() => {
+                    setHoveredItem('');
+                    document.body.style.overflow = '';
+                  }}
                   sx={{
                     color: 'black',
                     fontSize: rem(16),
                     fontWeight: 700,
                     textTransform: 'lowercase',
-                    height:rem(65)
+                    height: rem(65),
                   }}
                   style={{ textTransform: 'capitalize' }}
                 >

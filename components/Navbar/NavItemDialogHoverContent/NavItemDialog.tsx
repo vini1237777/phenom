@@ -41,13 +41,14 @@ const NavItemDialog = ({
         borderRadius: '20px',
         right: 0,
         left: 0,
-        top: 120,
-        zIndex: 1200,
+        top: "120px",
+        zIndex: 200,
         margin: `0 auto`,
         ...styles?.wrapper?.[hoveredItem],
       }}
-      onMouseEnter={() => setHoveredItem(hoveredItem)}
-      onMouseLeave={() => setHoveredItem('')}
+      onMouseEnter={() =>{ setHoveredItem(hoveredItem); 
+        document.body.style.overflow = 'hidden';}}
+      onMouseLeave={() =>{ setHoveredItem(''); document.body.style.overflow = ''}}
     >
       {hoveredItem === itemKeys.solution && <SolutionsContent />}
       {hoveredItem === itemKeys.resources && <ResourcesContent />}
