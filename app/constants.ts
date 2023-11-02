@@ -211,7 +211,7 @@ export const recruitersInfo = {
     description: 'Win the hearts and minds of candidates — with relevance.',
     sectionText: [
       'Time is of the essence for your ',
-      { highlight: 'next best hire' },
+      { highlight: ' next best hire' },
       ' — but how do you customize campaigns quickly?',
     ],
     featureText:
@@ -375,7 +375,7 @@ export const recruitersInfo = {
       'Modernize and integrate your HR tech stack — with a unified approach.',
     sectionText: [
       "You're juggling a great deal of diverse and disconnected",
-      { highlight: 'HR technology' },
+      { highlight: ' HR technology' },
       'solutions.',
     ],
     featureText:
@@ -425,7 +425,7 @@ export const recruitersInfo = {
       'Fuel business growth by empowering those who make it great — with exceptional experiences.',
     sectionText: [
       'You need to',
-      { highlight: 'attract and grow' },
+      { highlight: ' attract and grow' },
       "productive people. But they're hard to find, and many are considering a move.",
     ],
     featureText:
@@ -467,7 +467,7 @@ export const recruitersInfo = {
       'Facilitate productive and purposeful career paths — with precision.',
     sectionText: [
       "You're racing to",
-      { highlight: 'engage, evolve, and retain' },
+      { highlight: ' engage, evolve, and retain' },
       'your people as turnover reaches unprecedented rates.',
     ],
     featureText:
