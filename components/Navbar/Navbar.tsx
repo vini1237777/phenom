@@ -11,10 +11,6 @@ import { styled } from '@mui/system';
 import { rem } from '@/app/utils';
 import { HoveredItemType } from './NavItemDialogHoverContent/NavItemDialog';
 
-interface INavbarPorps {
-  setHoveredItem: (value: HoveredItemType) => void;
-};
-
 export const ButtonsWrapper = styled('div')({
   display: 'flex',
   marginRight: '34px',
@@ -95,9 +91,14 @@ const navLogoStyles = {
   },
 };
 
+interface INavbarPorps {
+  setHoveredItem: (value: HoveredItemType) => void;
+};
+
+
 const Navbar: React.FC<INavbarPorps> = ({
   setHoveredItem,
-}: any) => {
+}) => {
   return (
     <>
       <Box
