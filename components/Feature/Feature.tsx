@@ -1,4 +1,4 @@
-import { fetaureAccordionData } from '@/app/constants';
+import { IObject } from '@/app/constants';
 import { rem } from '@/app/utils';
 import { Accordion, AccordionDetails, AccordionSummary, Box, Link, Typography } from '@mui/material';
 import Image from 'next/image';
@@ -6,18 +6,20 @@ import React, { useState } from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
-const Feature = () => {
- const [expanded, setExpanded] = useState<string | false>('panel0');
+const Feature = ({role}:IObject) => {
+  // State to track which accordion panel is expanded
+  const [expanded, setExpanded] = useState<string | false>('panel0');
 
- const handleChange =
-   (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
-     setExpanded(isExpanded ? panel : false);
-   };
+  // Change handler for accordion to set which panel is expanded
+  const handleChange =
+    (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
   return (
     <Box
       sx={{
         height: '90vh',
-        paddingTop: rem(100),
+        paddingTop: rem(200),
         paddingLeft: rem(100),
         paddingBottom: rem(80),
         paddingRight: rem(100),
@@ -26,70 +28,97 @@ const Feature = () => {
         flexDirection: 'column',
       }}
     >
+      {/* Typography for the feature text */}
       <Typography
         sx={{ fontSize: rem(52), lineHeight: '100%', width: rem(1100) }}
       >
-        Discover eligible candidates and find the right fit for open roles.
+        {role.featureText} // The feature text coming from role
       </Typography>
 
-      <Box sx={{ display: 'flex', gap: rem(20), paddingTop: rem(80) }}>
-        <Box sx={{ width: rem(600), height: rem(600) }}>
-          {fetaureAccordionData.map((item, index) => (
-            <Accordion
-              key={index}
-              expanded={expanded === `panel${index}`} 
-              onChange={handleChange(`panel${index}`)}
-              sx={{
-                margin: '0px',
-                paddingBottom: rem(20),
-                borderBottom: '1px solid #cfd8e9',
-                boxShadow: 'none',
-                padding: '0px',
-                '&:before': { display: 'none' },
-              }}
-            >
-              <AccordionSummary
-                expandIcon={
-                  expanded !== `panel${index}` ? <ExpandMoreIcon /> : null
-                }
-                aria-controls={`panel${index}-content`}
-                id={`panel${index}-header`}
+      <Box sx={{ marginTop: rem(100) }}>
+        {/* Flex container for accordion and images */}
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: rem(10),
+          }}
+        >
+          {/* Box to hold the accordion items */}
+          <Box sx={{ flexGrow: 1 }}>
+            {role?.accordion.map((item: IObject, index: number) => (
+              <Accordion
+                key={index}
+                expanded={expanded === `panel${index}`}
+                onChange={handleChange(`panel${index}`)}
+                sx={{
+                  marginBottom: rem(20),
+                  borderBottom: '1px solid #cfd8dc',
+                  boxShadow: 'none',
+                  '&:before': { display: 'none' },
+                  width: rem(600),
+                  paddingBottom: rem(20),
+                }}
               >
-                <Typography sx={{ fontSize: rem(20), fontWeight: 500 }}>
-                  {item.title}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography
-                  sx={{ color: '#554f4f', fontWeight: 300, width: rem(380) }}
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls={`panel${index}-content`}
+                  id={`panel${index}-header`}
                 >
-                  {item.description}
-                </Typography>
-                <Typography sx={{ marginTop: rem(20), marginBottom: rem(20) }}>
-                  <Link
-                    href="#"
-                    sx={{
-                      color: '#1f2aac',
-                      textDecoration: 'none',
-                      '&:hover': {
-                        color: '#3f51b5',
-                      },
-                    }}
+                  <Typography sx={{ fontSize: rem(20), fontWeight: 500 }}>
+                    {item.title}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography sx={{ color: '#554f4f', fontWeight: 300 }}>
+                    {item.description}
+                  </Typography>
+                  <Typography
+                    sx={{ marginTop: rem(20), marginBottom: rem(20) }}
                   >
-                    {item.linkText}
-                  </Link>
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          ))}
+                    <Link
+                      href="#"
+                      sx={{
+                        color: '#1f2aac',
+                        textDecoration: 'none',
+                        '&:hover': {
+                          color: '#3f51b5',
+                        },
+                      }}
+                    >
+                      {item.btnText}
+                    </Link>
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            ))}
+          </Box>
+          {/* Box for the images associated with each accordion */}
+          <Box
+            sx={{
+              width: '600px',
+              height: '600px',
+              overflow: 'hidden',
+            }}
+          >
+            {role?.accordion.map((item: IObject, index: number) => (
+              <Box
+                key={index}
+                sx={{
+                  display: expanded === `panel${index}` ? 'block' : 'none', // Show only the image of the expanded accordion
+                }}
+              >
+                <Image
+                  src={item.image}
+                  alt={`Feature ${index}`}
+                  width={'600'}
+                  height={'600'}
+                  style={{ backgroundColor: '#f8f8f8', borderRadius: '8px' }}
+                />
+              </Box>
+            ))}
+          </Box>
         </Box>
-        <Image
-          src="https://images.ctfassets.net/0d3i1kfsuaq3/6fpRoVw1NDIken69OoTDWf/983a4beb533856edefba455e6df504b5/Hiring_Dashboards.png"
-          width={'600'}
-          height={'600'}
-          alt={'feature'}
-          style={{ backgroundColor: '#f8f8f8' }}
-        />
       </Box>
     </Box>
   );

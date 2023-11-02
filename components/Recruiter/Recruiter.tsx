@@ -1,4 +1,4 @@
-import { recruiterRoles } from '@/app/constants';
+import { IObject, recruiterRoles } from '@/app/constants';
 import RecruiterSvg from '@/app/RecruiterSvg';
 import { rem } from '@/app/utils';
 import { Avatar, Box, Button, List, ListItem, Typography } from '@mui/material';
@@ -7,9 +7,52 @@ import React, { useState } from 'react'
 import { ButtonsWrapper, DemoButton } from '../Navbar/Navbar';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const Recruiter: React.FC = () => {
-  const [open, setOpen] = useState(false);
-
+const Recruiter = ({
+  recruiter,
+  setRecruiter,
+  role,
+}: {
+  recruiter?: IObject;
+  setRecruiter:(recruiter:IObject)=> void;
+  role:IObject
+}) => {
+  const [open, setOpen] = useState(false); // State to manage dropdown visibility
+  
+  const renderTextSections = (textParts: any[]) => {
+    return textParts.map((part: IObject | string, index: number) =>
+      typeof part === 'string' ? (
+        // Renders plain text
+        <Typography
+          key={index}
+          sx={{
+            color: 'white',
+            fontSize: rem(64),
+            lineHeight: '110%',
+            marginLeft: rem(2),
+          }}
+          component={'span'}
+        >
+          {part}
+        </Typography>
+      ) : (
+        // Renders highlighted text
+        <Typography
+          key={index}
+          sx={{
+            background:
+              'linear-gradient(89.88deg, #ff8045 2.69%, #7bd3cf 43.19%, #ab9cee 72%, #ffbd45 99.83%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            fontSize: rem(64),
+            lineHeight: '110%',
+          }}
+          component={'span'}
+        >
+          {part.highlight}
+        </Typography>
+      ),
+    );
+  };
   return (
     <Box
       sx={{
@@ -22,6 +65,7 @@ const Recruiter: React.FC = () => {
         marginTop: rem(50),
       }}
     >
+      {/* Recruiter's avatar and dropdown on the left */}
       <Box sx={{ paddingTop: rem(70), flex: 1 }}>
         <Button
           variant="text"
@@ -29,9 +73,7 @@ const Recruiter: React.FC = () => {
           onMouseLeave={() => setOpen(false)}
         >
           <Avatar
-            src={
-              'https://images.ctfassets.net/0d3i1kfsuaq3/2ov9QTRpuLSZ9XJg8M0MV5/06ebe6fc1e519593ee110ac896acbf2b/01-recruiters-frontal_1__1_.webp'
-            }
+            src={role?.thumbnailImg}
             alt={'Recruiters'}
             sx={{ backgroundColor: 'white' }}
           />
@@ -44,10 +86,10 @@ const Recruiter: React.FC = () => {
               color: 'white',
             }}
           >
-            {' '}
-            Recruiters
+            {recruiter?.label}
           </Typography>
         </Button>
+        {/* renders dropdown when hovered over the  avatar and dropdown */}
         {open && (
           <Box
             sx={{
@@ -82,6 +124,10 @@ const Recruiter: React.FC = () => {
                 <ListItem
                   key={role.label}
                   sx={{ width: rem(269), display: 'flex', gap: rem(10) }}
+                  onClick={() => {
+                    setRecruiter(role);
+                    setOpen(false);
+                  }}
                 >
                   <Avatar
                     src={role.img}
@@ -94,6 +140,7 @@ const Recruiter: React.FC = () => {
                       fontSize: rem(15),
                       fontWeight: 600,
                       lineHeight: 1.5,
+                      cursor: 'pointer',
                     }}
                   >
                     {role.label}
@@ -103,29 +150,20 @@ const Recruiter: React.FC = () => {
             </List>
           </Box>
         )}
-        <Typography
+        {/* renders the description below the dropdown on the left */}
+        <Box
           sx={{
-            color: 'white',
-            fontSize: rem(64),
+            width: '400px',
+            fontSize: '20px',
             lineHeight: '110%',
-            marginTop: rem(30),
+            paddingTop: rem(20),
           }}
         >
-          Phenom for
-        </Typography>
-        <Typography
-          sx={{
-            background:
-              'linear-gradient(89.88deg, #ff8045 2.69%, #7bd3cf 43.19%, #ab9cee 72%, #ffbd45 99.83%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            fontSize: rem(64),
-          }}
-          component={'span'}
-          
-        >
-          Recruiters
-        </Typography>
+          <Box sx={{ width: '400px' }}>
+            {role.heading && renderTextSections(role.heading)}
+          </Box>
+        </Box>
+        {/* renders button below the description on the left */}
         <Box
           sx={{
             paddingTop: rem(200),
@@ -139,12 +177,11 @@ const Recruiter: React.FC = () => {
               color: 'white',
               fontSize: rem(20),
               fontWeight: 200,
-              width: rem(450),
+              width: rem(420),
               animation: 'fadeIn 2.5s forwards',
             }}
           >
-            Discover, engage and hire phenomenal people — with speed and
-            velocity.
+            {role.description}
           </Typography>
           <style jsx global>{`
             @keyframes fadeIn {
@@ -168,6 +205,8 @@ const Recruiter: React.FC = () => {
           </ButtonsWrapper>
         </Box>
       </Box>
+
+      {/* Image diplayed on the right */}
       <Box
         sx={{
           overflow: 'hidden',
@@ -180,9 +219,7 @@ const Recruiter: React.FC = () => {
         }}
       >
         <Image
-          src={
-            'https://images.ctfassets.net/0d3i1kfsuaq3/2ov9QTRpuLSZ9XJg8M0MV5/06ebe6fc1e519593ee110ac896acbf2b/01-recruiters-frontal_1__1_.webp'
-          }
+          src={role.image}
           width={480}
           height={690}
           alt="Image"

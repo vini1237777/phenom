@@ -17,6 +17,7 @@ export default function PlatformContent() {
         backgroundColor: '#eeeff2',
       }}
     >
+      {/* Left-hand side container for talent and phenom cards */}
       <Box
         sx={{
           display: 'flex',
@@ -27,6 +28,7 @@ export default function PlatformContent() {
           borderRadius: rem(14),
         }}
       >
+        {/* Talent card with custom SVG and hover effect */}
         <Box
           sx={{
             borderRadius: rem(14),
@@ -49,6 +51,7 @@ export default function PlatformContent() {
             },
           }}
         >
+          {/* Title, description, and button text of the talent card */}
           <Typography
             sx={{
               fontWeight: 700,
@@ -118,6 +121,7 @@ export default function PlatformContent() {
           );
         })}
       </Box>
+      {/* Right-hand side container for experience and phenom AI cards */}
       <Box
         sx={{
           display: 'flex',
@@ -132,6 +136,7 @@ export default function PlatformContent() {
           },
         }}
       >
+        {/* Box for rendering the Experience Cards */}
         {experienceCardData?.map((experience) => {
           return (
             <Box
@@ -156,6 +161,7 @@ export default function PlatformContent() {
               }}
             >
               <ExperienceSvg />
+
               <Box
                 sx={{
                   display: 'flex',
@@ -198,6 +204,7 @@ export default function PlatformContent() {
           );
         })}
 
+        {/* Title, description, and button text of the phenom AI card */}
         <Box
           sx={{
             borderRadius: rem(14),

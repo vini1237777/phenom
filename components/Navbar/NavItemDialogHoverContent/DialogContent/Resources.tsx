@@ -5,6 +5,7 @@ import { Box, Button, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 
+// Styles for the Category component
 const categoryStyle = {
   wrapper: {
     flex: 1,
@@ -44,12 +45,14 @@ const ResourcesContent: React.FC = () => {
         borderRadius: rem(14),
       }}
     >
+      {/* Render Category components for resources and about Phenom Studios */}
       <Category items={resources} styles={categoryStyle} title={'Resources'} />
       <Category
         items={phenomStudios}
         styles={categoryStyle}
         title={'Phenom Studios'}
       />
+      {/* The right-hand side content cards */}
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         <Box sx={{ color: '#93969d' }}>Featured Reads</Box>
         {reads.map((read, index) => (

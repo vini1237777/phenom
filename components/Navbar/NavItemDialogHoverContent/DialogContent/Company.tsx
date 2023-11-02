@@ -8,6 +8,7 @@ import Category from '@/components/Category';
 import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
 
+// Styles for the Category component
 const categoryStyle = {
   wrapper: {
     flex: 1,
@@ -17,6 +18,7 @@ const categoryStyle = {
   },
 };
 
+// The CompanyContent component displays content related to the company
 const CompanyContent: React.FC = () => {
   return (
     <Box
@@ -28,8 +30,10 @@ const CompanyContent: React.FC = () => {
         borderRadius: rem(14),
       }}
     >
+      {/* Render Category components for customers and about sections */}
       <Category items={customers} styles={categoryStyle} />
       <Category items={about} styles={categoryStyle} />
+      {/* The right-hand side content block */}
       <Box
         sx={{
           width: rem(538),

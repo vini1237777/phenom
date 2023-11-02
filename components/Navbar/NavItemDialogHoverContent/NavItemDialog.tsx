@@ -7,8 +7,10 @@ import PlatformContent from './DialogContent/Platform';
 import ResourcesContent from './DialogContent/Resources';
 import SolutionsContent from './DialogContent/Solutions';
 
+// Type definition for the type of item that can be hovered over in the navbar.
 export type HoveredItemType = 'solution' | 'platform' | 'resources' | 'company' | '';
 
+// Styles object to control the width of the dialog based on the hovered item's type.
 const styles = {
   wrapper: {
     [itemKeys.solution]: {
@@ -25,6 +27,9 @@ const styles = {
     },
   },
 };
+
+
+//NavItemDialog renders a  dialog box that changes content based on the navigation item that is hovered over.
 
 const NavItemDialog = ({
   hoveredItem,

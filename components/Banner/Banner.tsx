@@ -3,6 +3,7 @@ import { rem } from '@/app/utils';
 import { Box, Button, Typography } from '@mui/material';
 import Link from 'next/link';
 
+// Style object containing CSS properties for the banner and button.
 const styles = {
   banner: {
     paddingTop: rem(20),
@@ -35,7 +36,8 @@ const styles = {
   },
 };
 
-const Banner: React.FC = () => {
+// Functional component for rendering the top banner with a link and button.
+const Banner= () => {
   return (
     <Box sx={{ ...styles.banner }}>
       <Box>

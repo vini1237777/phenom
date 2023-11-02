@@ -11,11 +11,13 @@ import { styled } from '@mui/system';
 import { rem } from '@/app/utils';
 import { HoveredItemType } from './NavItemDialogHoverContent/NavItemDialog';
 
+// Custom styled wrappers for the buttons
 export const ButtonsWrapper = styled('div')({
   display: 'flex',
   marginRight: '34px',
 });
 
+// Base button with custom styling
 export const CustomButton = styled(Button)({
   fontFamily: 'roobert, Arial, sans-serif',
   fontWeight: 400,
@@ -27,6 +29,7 @@ export const CustomButton = styled(Button)({
   borderRadius: '100px',
 });
 
+// Button styled for demo 
 export const DemoButton = styled(CustomButton)({
   backgroundColor: '#4543d9',
   color: 'white',
@@ -35,6 +38,7 @@ export const DemoButton = styled(CustomButton)({
   },
 });
 
+// Button styled for login 
 const LoginButton = styled(CustomButton)({
   border: '1px solid #4543d9',
   color: '4543d9',
@@ -45,6 +49,7 @@ const LoginButton = styled(CustomButton)({
   },
 });
 
+// Navigation items data array
 const items = [
   { label: 'Platform', key: itemKeys.platform, content: <PlatformContent /> },
   { label: 'Solutions', key: itemKeys.solution, content: <SolutionsContent /> },
@@ -57,6 +62,7 @@ const items = [
   { href: '/item2', label: 'Events', content: '' },
 ];
 
+// Styles object for the logo component
 const navLogoStyles = {
   wrapper: {
     fontWeight: '400',
@@ -91,16 +97,16 @@ const navLogoStyles = {
   },
 };
 
+// Props interface for Navbar component
 interface INavbarPorps {
   setHoveredItem: (value: HoveredItemType) => void;
 };
 
 
-const Navbar: React.FC<INavbarPorps> = ({
-  setHoveredItem,
-}) => {
+const Navbar = ({ setHoveredItem }: INavbarPorps) => {
   return (
     <>
+      {/* Main navigation container */}
       <Box
         sx={{
           backgroundColor: 'white',
@@ -110,16 +116,19 @@ const Navbar: React.FC<INavbarPorps> = ({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding:rem(10),
-          zIndex: 100
+          padding: rem(10),
+          zIndex: 100,
         }}
       >
+        {/* Logo linked to the homepage */}
         <Link href="/" passHref>
           <Button style={{ color: 'black', textTransform: 'none' }}>
             <NavLogoSvg styles={navLogoStyles} />
           </Button>
         </Link>
-        <Box sx={{ zIndex: 1}}>
+
+        {/* Navigation hovered items will be displayed here */}
+        <Box sx={{ zIndex: 1 }}>
           {items.map((item: any) => {
             return item.href ? (
               <Link href={item.href} key={item.label}>
@@ -161,6 +170,8 @@ const Navbar: React.FC<INavbarPorps> = ({
             );
           })}
         </Box>
+
+        {/* Navbar Buttons  */}
         <ButtonsWrapper>
           <DemoButton
             variant="contained"
