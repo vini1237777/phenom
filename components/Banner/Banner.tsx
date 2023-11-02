@@ -1,20 +1,18 @@
 
+import { rem } from '@/app/utils';
 import { Box, Button, Typography } from '@mui/material';
 import Link from 'next/link';
 
 const styles = {
   banner: {
-    paddingTop: '20px',
-    paddingBottom: '20px',
+    paddingTop: rem(20),
     backgroundColor: '#4035de',
     position: 'fixed',
     top: '0',
     width: '100%',
     zIndex: 9,
     textAlign: 'center',
-    margin: '0',
     padding: '0',
-    border: 'none',
   },
   button: {
     background: 'none',
