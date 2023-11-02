@@ -1,4 +1,4 @@
-import CompanySvg from 'app/companySvg';
+import CompanySvg from 'app/CompanySvg';
 import {
   about,
   customers,
